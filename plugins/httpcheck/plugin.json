@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "id": "demo.httpcheck",
+  "name": "接口可用性自查",
+  "version": "1.0.0",
+  "author": "TeamSSH",
+  "description": "检查 GitHub API 与插件索引是否可达；请求由主程序代发并过域名白名单。",
+  "entry": "main.js",
+  "capabilities": [
+    "net.fetch",
+    "storage",
+    "ui.toast"
+  ],
+  "netHosts": [
+    "api.github.com",
+    "raw.githubusercontent.com"
+  ],
+  "minAppVersion": "0.1.0",
+  "sha256": "88d18322749c2ce32a73517c468c2fe392559157c576d80f47c6f50e48bf2a41"
+}

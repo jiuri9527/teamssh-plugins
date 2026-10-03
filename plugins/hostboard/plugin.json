@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "demo.hostboard",
+  "name": "主机指标看板",
+  "version": "1.0.0",
+  "author": "TeamSSH",
+  "description": "用主程序已采集的 5 分钟聚合数据看 CPU/内存/磁盘/负载，不额外探测服务器。",
+  "entry": "main.js",
+  "capabilities": [
+    "data.hosts.read",
+    "monitor.read",
+    "ui.toast"
+  ],
+  "netHosts": [],
+  "minAppVersion": "0.1.0",
+  "sha256": "289c3528e7aaf51c05a6cd4180b43848c54f53834025d53009a56c67ea54ceb0"
+}

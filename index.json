@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "plugins": [
+    {
+      "id": "demo.hello",
+      "name": "便签",
+      "version": "1.0.0",
+      "description": "把随手要记的东西存在插件自己的沙箱里，卸载即清空。",
+      "path": "plugins/hello",
+      "sha256": "9e341849a1f5f27801ac493c09b319a1108a4629e6033447b41111b41cf18b5f",
+      "capabilities": [
+        "storage",
+        "ui.toast"
+      ]
+    },
+    {
+      "id": "demo.hostboard",
+      "name": "主机指标看板",
+      "version": "1.0.0",
+      "description": "用主程序已采集的 5 分钟聚合数据看 CPU/内存/磁盘/负载，不额外探测服务器。",
+      "path": "plugins/hostboard",
+      "sha256": "289c3528e7aaf51c05a6cd4180b43848c54f53834025d53009a56c67ea54ceb0",
+      "capabilities": [
+        "data.hosts.read",
+        "monitor.read",
+        "ui.toast"
+      ]
+    },
+    {
+      "id": "demo.httpcheck",
+      "name": "接口可用性自查",
+      "version": "1.0.0",
+      "description": "检查 GitHub API 与插件索引是否可达；请求由主程序代发并过域名白名单。",
+      "path": "plugins/httpcheck",
+      "sha256": "88d18322749c2ce32a73517c468c2fe392559157c576d80f47c6f50e48bf2a41",
+      "capabilities": [
+        "net.fetch",
+        "storage",
+        "ui.toast"
+      ]
+    },
+    {
+      "id": "demo.execdemo",
+      "name": "远程命令演示",
+      "version": "1.0.0",
+      "description": "四条只读命令样板；每条都要你在弹窗里单独批准一次，批准不累积。",
+      "path": "plugins/execdemo",
+      "sha256": "67e516c880a8380b755d545d6f0b6bc62bbf80521e6ddc603f98c54162c4060d",
+      "capabilities": [
+        "data.hosts.read",
+        "exec.command",
+        "ui.toast"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "demo.execdemo",
+  "name": "远程命令演示",
+  "version": "1.0.0",
+  "author": "TeamSSH",
+  "description": "四条只读命令样板；每条都要你在弹窗里单独批准一次，批准不累积。",
+  "entry": "main.js",
+  "capabilities": [
+    "data.hosts.read",
+    "exec.command",
+    "ui.toast"
+  ],
+  "netHosts": [],
+  "minAppVersion": "0.1.0",
+  "sha256": "67e516c880a8380b755d545d6f0b6bc62bbf80521e6ddc603f98c54162c4060d"
+}
