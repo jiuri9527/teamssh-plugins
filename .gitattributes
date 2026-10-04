@@ -1,0 +1,8 @@
+# 索引与签名必须按**原样字节**分发。
+# 签名覆盖的是 index.json 的字节本身（没有 JSON 规范化），所以任何一个换行被改动
+# 都会让全量用户判 AUTH_INVALID 并装不上插件；而这类改动恰恰是 git 的 eol 规范化
+# 和编辑器的"保存时统一换行"会静默做出来的。标 -text 让它们都别碰这两个文件。
+index.json  -text eol=lf
+index.sig   -text eol=lf
+*.js        eol=lf
+*.json      eol=lf

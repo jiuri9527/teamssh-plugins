@@ -113,6 +113,29 @@ teamssh.platform.root()                     // 你的 DOM 挂载点
    （应用会拒绝"清单超出索引声明"的越权提权）。
 4. 提 PR。索引里任何一条不合法，整份索引会被应用判废拒解析 —— 请自查后再提。
 
+## 索引签名（来源证明）
+
+`index.json` 由发布者的 Ed25519 私钥签名，签名放在同目录的 `index.sig`（64 字节签名的 hex）。
+应用内置对应公钥，拉完索引**先验签再解析**：验不过就直接拒绝安装任何插件。
+
+这一层补的是 sha256 补不到的洞：`plugin.json` 里的 `sha256` 只证明"下到的字节是索引说的字节"，
+不证明"索引本身没被换过"。仓库被夺权或维护者账号被盗时，攻击者会同时改掉 `url` 和 `sha256`，
+所有完整性检查照样通过。签名把信任锚从"这个 GitHub 仓库"移到"这把私钥"。
+
+- 私钥永不进仓库、不经任何第三方、也不出现在手机上；应用侧只有验签代码，没有签名代码。
+- 签的是**文件原始字节**，不做 JSON 规范化（避免签名对象与解析对象出现两份表示）。
+
+改完 `index.json` 必须重签，否则线上会变成"签名单元不配套"，全量用户装不上插件：
+
+```bash
+python3 tools/sign-plugin-index.py sign --repo /path/to/teamssh-plugins   # 在 App 主仓里跑
+git add index.json index.sig && git commit && git push
+```
+
+特别注意：`tools/gen-registry.py` 重新生成 `index.json` 之后，签名字节就变了 ⇒ **必须紧跟着重签**。
+这条顺序忘了的后果不是警告而是全员硬失败，所以发布侧有 `bash qa/plugin-index-verify.sh`
+把线上的 json/sig 与 App 内置公钥三者对一遍。
+
 ## 已收录
 
 | 插件 | 能力 | 说明 |
